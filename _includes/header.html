@@ -1,0 +1,11 @@
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.author.name }}"><img src="{{ '/assets/logo.svg' | relative_url }}" alt="{{ site.author.name }}" width="40" height="40"><span class="cur">_</span></a>
+    <nav>
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Blog</a>
+      <a href="{{ '/todo/' | relative_url }}"{% if page.url == '/todo/' %} aria-current="page"{% endif %}>Todo</a>
+      <a href="{{ '/temas/' | relative_url }}"{% if page.url == '/temas/' %} aria-current="page"{% endif %}>Temas</a>
+      <a href="{{ '/nosotros/' | relative_url }}"{% if page.url == '/nosotros/' %} aria-current="page"{% endif %}>Nosotros</a>
+    </nav>
+  </div>
+</header>

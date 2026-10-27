@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-head">
+    {% if page.ref or page.severity or page.featured %}
+    <div class="meta">
+      {% if page.featured %}<span class="badge-featured">destacado</span>{% endif %}
+      {% if page.ref or page.severity %}<span class="ref">{% if page.ref %}{{ page.ref }}{% else %}REF-{{ page.date | date: "%Y%m%d" }}{% endif %}</span>{% endif %}
+      {% if page.severity %}<span class="sev sev-{{ page.severity | downcase }}">{{ page.severity }}</span>{% endif %}
+    </div>
+    {% endif %}
+    <h1>{{ page.title }}</h1>
+    <dl class="facts">
+      <div><dt>fecha</dt><dd>{{ page.date | date: "%Y-%m-%d" }}</dd></div>
+      <div><dt>autor</dt><dd>{{ page.author | default: site.author.name }}</dd></div>
+      <div><dt>lectura</dt><dd>{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min</dd></div>
+      {% if page.scope %}<div><dt>alcance</dt><dd>{{ page.scope }}</dd></div>{% endif %}
+      {% if page.cvss %}<div><dt>cvss</dt><dd>{{ page.cvss }}</dd></div>{% endif %}
+    </dl>
+  </header>
+  <div class="content">{{ content }}</div>
+  <footer class="post-foot">
+    <div class="tags">{% for t in page.tags %}<a href="{{ '/temas/' | relative_url }}#{{ t | slugify }}">{{ t }}</a>{% endfor %}</div>
+  </footer>
+</article>

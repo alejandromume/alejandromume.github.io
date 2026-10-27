@@ -1,0 +1,25 @@
+---
+permalink: /llms.txt
+---
+# {{ site.title }}
+
+> {{ site.description }}
+
+{{ site.author.bio }}
+
+## Casos y vulnerabilidades
+{% assign casos = site.posts | where_exp: "p", "p.severity" %}
+{% for post in casos %}
+- [{{ post.title }}]({{ post.url | absolute_url }}){% if post.severity %}: severidad {{ post.severity }}{% endif %}{% if post.cvss %}, CVSS {{ post.cvss }}{% endif %}
+{% endfor %}
+
+## Artículos
+{% assign articulos = site.posts | where_exp: "p", "p.severity == nil" %}
+{% for post in articulos %}
+- [{{ post.title }}]({{ post.url | absolute_url }})
+{% endfor %}
+
+## Otras páginas
+- [Todos los casos y entradas]({{ '/todo/' | absolute_url }})
+- [Entradas por tema]({{ '/temas/' | absolute_url }})
+- [Sobre Lava Digital]({{ '/nosotros/' | absolute_url }})

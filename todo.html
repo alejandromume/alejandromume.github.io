@@ -1,0 +1,30 @@
+---
+layout: page
+title: Todo
+description: "Archivo completo del blog de Lava Digital: casos de auditoría con CVE o identificador de INCIBE, y artículos sobre software, IA y ciberseguridad."
+permalink: /todo/
+---
+{% assign casos = site.posts | where_exp: "p", "p.severity" %}
+{% assign articulos = site.posts | where_exp: "p", "p.severity == nil" %}
+
+<h2 class="section">casos y vulnerabilidades</h2>
+{% if casos.size > 0 %}
+<ul class="archive">
+{% for post in casos %}
+  <li><time>{{ post.date | date: "%Y-%m-%d" }}</time> <span class="ref">{% if post.ref %}{{ post.ref }}{% else %}REF-{{ post.date | date: "%Y%m%d" }}{% endif %}</span> {% if post.severity %}<span class="sev sev-{{ post.severity | downcase }}">{{ post.severity }}</span> {% endif %}<a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p class="lead">Todavía no hay nada aquí.</p>
+{% endif %}
+
+<h2 class="section">artículos</h2>
+{% if articulos.size > 0 %}
+<ul class="archive">
+{% for post in articulos %}
+  <li><time>{{ post.date | date: "%Y-%m-%d" }}</time> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p class="lead">Todavía no hay nada aquí.</p>
+{% endif %}

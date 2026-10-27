@@ -1,0 +1,45 @@
+title: "Blog de Lava Digital"
+tagline: "Software, IA y ciberseguridad"
+description: "Blog de Lava Digital, consultora de implementación de software e inteligencia artificial."
+url: "https://blog.lavadigital.es"
+baseurl: ""
+lang: es
+logo: /assets/icon-512.png
+twitter:
+  card: summary
+
+# Datos de la empresa (edítalos)
+author:
+  name: "Lava Digital"
+  type: "Organization"
+  role: "Consultora de software e inteligencia artificial"
+  bio: "Implementamos y desarrollamos software e IA a medida para optimizar la operativa de tu organización."
+  github: "alejandromume"
+  twitter: ""
+  linkedin: ""
+  email: "hola@lavadigital.es"
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /:year/:month/:title/
+paginate: 40
+paginate_path: "/page/:num/"
+timezone: Europe/Madrid
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+
+exclude: [casos, CLAUDE.md, Gemfile, Gemfile.lock, README.md, vendor, node_modules]
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/icon-512.png

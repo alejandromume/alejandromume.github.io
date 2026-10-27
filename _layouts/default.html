@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  {% feed_meta %}
+  <link rel="icon" href="{{ '/assets/favicon-32.png' | relative_url }}" sizes="32x32" type="image/png">
+  <link rel="icon" href="{{ '/assets/favicon-16.png' | relative_url }}" sizes="16x16" type="image/png">
+  <link rel="icon" href="{{ '/assets/favicon.ico' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+  {% include header.html %}
+  <main id="main" class="wrap">
+    {{ content }}
+  </main>
+  {% include footer.html %}
+</body>
+</html>

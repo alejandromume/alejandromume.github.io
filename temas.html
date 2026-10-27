@@ -1,0 +1,14 @@
+---
+layout: page
+title: Temas
+description: "Todas las entradas del blog de Lava Digital organizadas por tema: XSS, CSRF, criptografía, IA y más."
+permalink: /temas/
+---
+{% assign tags = site.tags | sort %}
+<p class="tagcloud">{% for tag in tags %}<a href="#{{ tag[0] | slugify }}">#{{ tag[0] }} <small>{{ tag[1].size }}</small></a>{% endfor %}</p>
+{% for tag in tags %}
+<h3 id="{{ tag[0] | slugify }}">#{{ tag[0] }}</h3>
+<ul class="archive">
+  {% for post in tag[1] %}<li><time>{{ post.date | date: "%Y-%m-%d" }}</time> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>{% endfor %}
+</ul>
+{% endfor %}

@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© {{ site.time | date: "%Y" }} {{ site.author.name }}</span>
+    <span class="links">
+      {% if site.author.twitter != "" %}<a href="https://twitter.com/{{ site.author.twitter }}">twitter</a>{% endif %}
+      {% if site.author.linkedin != "" %}<a href="https://linkedin.com/in/{{ site.author.linkedin }}">linkedin</a>{% endif %}
+      {% if site.author.email != "" %}<a href="mailto:{{ site.author.email }}">email</a>{% endif %}
+    </span>
+  </div>
+</footer>
