@@ -108,13 +108,6 @@ Este segundo informe nace de seguir tirando del hilo sobre el mismo fabricante: 
 
 Eso abre la puerta a usar operadores propios del motor (del estilo de `$ne` o `$in`, "distinto de" o "está en una lista") en vez de un valor literal. El efecto práctico: una cuenta de colaborador autenticada, que normalmente solo debería ver los datos de su propio negocio, puede pedir "todo lo que no sea este identificador concreto" y la consulta le devuelve igualmente resultados, solo que pertenecientes a negocios completamente ajenos a su cuenta. El parámetro que en teoría limita el acceso al negocio propio del colaborador no se aplica de verdad a nivel de consulta: se queda en una comprobación superficial que el propio operador inyectado esquiva.
 
-Una petición de control, con un valor literal como `_id`, solo devuelve el evento que pertenece al negocio propio de la cuenta. Sustituyendo ese mismo valor por el operador `$ne` ("distinto de cualquier cosa"), con las mismas cabeceras de sesión y el mismo `colaborador_id`, la respuesta cambia a un evento completamente distinto, con un `_id` que no tiene nada que ver con el de la petición de control:
-
-<figure>
-  <img src="{{ '/assets/img/posts/fourvenues/fig-nosql-poc.png' | relative_url }}" alt="Dos peticiones a /eventos_performance: arriba con un _id literal, devolviendo el negocio propio; abajo con el operador $ne inyectado, devolviendo un evento con un _id completamente distinto" width="1047" height="1194" loading="lazy" decoding="async">
-  <figcaption>Arriba, petición de control con un valor literal: solo datos del negocio propio. Abajo, el mismo request con <code>$ne</code> inyectado: otro evento, de otro negocio, sin tocar las cabeceras de sesión.</figcaption>
-</figure>
-
 El mismo patrón se confirmó, de forma independiente, en tres endpoints distintos del panel profesional (rendimiento de eventos, usuarios y tarifas de eventos), dos de ellos con nombres de parámetro distintos que resuelven al mismo comportamiento. El operador `$in` funciona igual en el endpoint de usuarios:
 
 <figure>
