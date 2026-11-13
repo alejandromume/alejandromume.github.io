@@ -2,7 +2,6 @@
 title: "TP-Link XGB430v Pro: cuando el cifrado \"propio\" sustituye a TLS (y falla)"
 date: 2026-10-26 09:00:00 +0000
 author: "Alejandro Müller Medina"
-featured: true
 severity: high
 cvss: "8.8 (CVSS v3.1 y v4.0)"
 scope: "Panel de administración web local del router"
